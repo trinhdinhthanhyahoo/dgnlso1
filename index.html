@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trắc nghiệm online</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --background-color: #f1f5f9;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: var(--background-color);
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        .start-container {
+            text-align: center;
+            padding: 50px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
+            max-width: 90%;
+            width: 500px;
+        }
+
+        h1 {
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+
+        .start-button {
+            padding: 16px 48px;
+            font-size: 18px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-weight: 500;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        }
+
+        .start-button:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="start-container">
+        <h1>Trắc nghiệm online</h1>
+        <button class="start-button" onclick="window.location.href='deso1.html'">Bắt đầu làm bài</button>
+    </div>
+</body>
+
+</html>
