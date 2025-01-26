@@ -501,4 +501,23 @@ function reviewAnswers() {
 document.addEventListener('DOMContentLoaded', () => {
     createAnswerGrid(120);
     updateTimer();
-}); 
+});
+function showModal(message, confirmCallback) {
+    document.getElementById('modal-message').textContent = message;
+    document.getElementById('notification-modal').style.display = 'flex';
+    window.currentConfirmCallback = confirmCallback;
+}
+
+function closeModal() {
+    document.getElementById('notification-modal').style.display = 'none';
+}
+
+function confirmAction() {
+    if (window.currentConfirmCallback) {
+        window.currentConfirmCallback();
+    }
+    closeModal();
+}
+showModal('Bạn có chắc chắn muốn nộp bài?', () => {
+    // Xử lý khi người dùng xác nhận
+});

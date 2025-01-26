@@ -42,11 +42,75 @@
             }
         }
 
+        /* Thêm CSS cho modal thông báo */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            max-width: 90%;
+            width: 300px;
+            text-align: center;
+        }
+
+        .modal-title {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 15px;
+            color: #333;
+        }
+
+        .modal-message {
+            font-size: 14px;
+            margin-bottom: 20px;
+            color: #666;
+        }
+
+        .modal-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .modal-button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .modal-button.primary {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .modal-button.secondary {
+            background-color: #9e9e9e;
+            color: white;
+        }
+
+        /* CSS cho grid câu trả lời */
         #answer-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 8px;
             margin-bottom: 12px;
+            padding-top: 50px;
+            /* Thêm padding-top để không bị che bởi timer */
         }
 
         .answer-item {
@@ -102,27 +166,33 @@
         #submit {
             display: block;
             width: 100%;
-            padding: 8px;
+            padding: 12px;
             background-color: #4CAF50;
             color: white;
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            font-size: 14px;
+            font-size: 16px;
             font-weight: 500;
-            transition: background-color 0.2s;
+            margin-top: 20px;
         }
 
-        #submit:hover {
-            background-color: #45a049;
-        }
+        /* Mobile Responsive */
+        @media (max-width: 932px) {
+            body {
+                padding: 4px;
+            }
 
-        /* Thêm CSS cho mobile vào phần style trong answer.html */
-        @media (max-width: 768px) {
+            .timer {
+                top: 5px;
+                right: 5px;
+                padding: 6px 10px;
+                font-size: 14px;
+            }
+
             #answer-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 6px;
-                padding: 8px;
+                padding-top: 40px;
+                gap: 4px;
             }
 
             .answer-item {
@@ -130,8 +200,8 @@
             }
 
             .question-number {
-                font-size: 11px;
                 min-width: 30px;
+                font-size: 11px;
             }
 
             .option-btn {
@@ -140,28 +210,28 @@
                 font-size: 11px;
             }
 
-            .timer {
-                font-size: 14px;
-                padding: 6px 10px;
+            .modal-content {
+                padding: 15px;
+                width: 85%;
+            }
+
+            .modal-title {
+                font-size: 16px;
+            }
+
+            .modal-message {
+                font-size: 13px;
+            }
+
+            .modal-button {
+                padding: 6px 12px;
+                font-size: 13px;
             }
 
             #submit {
-                padding: 12px;
+                padding: 10px;
                 font-size: 14px;
-            }
-
-            .modal-content {
-                width: 95%;
-                padding: 15px;
-            }
-
-            .modal-buttons {
-                flex-wrap: wrap;
-            }
-
-            .modal-buttons button {
-                width: 100%;
-                margin: 5px 0;
+                margin-top: 15px;
             }
         }
     </style>
@@ -172,6 +242,19 @@
     <h2>Bảng trả lời</h2>
     <div id="answer-grid"></div>
     <button id="submit">Nộp bài</button>
+
+    <!-- Modal thông báo -->
+    <div class="modal" id="notification-modal">
+        <div class="modal-content">
+            <div class="modal-title">Thông báo</div>
+            <div class="modal-message" id="modal-message"></div>
+            <div class="modal-buttons">
+                <button class="modal-button secondary" onclick="closeModal()">Đóng</button>
+                <button class="modal-button primary" onclick="confirmAction()">Xác nhận</button>
+            </div>
+        </div>
+    </div>
+
     <script src="answer.js"></script>
 </body>
 
