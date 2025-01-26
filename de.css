@@ -43,8 +43,26 @@ body {
     background: white;
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
     padding: 10px;
-    overflow: hidden;
+    overflow: auto;
     max-width: 70%;
+    position: relative;
+    -webkit-overflow-scrolling: touch;
+}
+
+#pages-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    width: 100%;
+    transition: transform 0.1s ease-out;
+}
+
+.pdf-page {
+    width: 100%;
+    height: auto;
+    display: block;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 .answer-container {
@@ -89,9 +107,10 @@ body {
 
 #pdf-viewer {
     width: 100%;
-    height: 100%;
+    height: auto;
     border: none;
     border-radius: 8px;
+    touch-action: pan-y pinch-zoom;
 }
 
 #answer-viewer {
@@ -122,6 +141,7 @@ body {
         border-radius: 0;
         background: white;
         order: -1;
+        overflow: hidden;
     }
 
     .answer-container {
@@ -138,10 +158,11 @@ body {
     #pdf-viewer,
     #answer-viewer {
         width: 100%;
-        height: 100%;
+        height: auto;
         border: none;
         margin: 0;
         padding: 0;
+        max-width: 100%;
     }
 
     .theme-toggle {
@@ -156,4 +177,67 @@ body {
     .theme-toggle i {
         font-size: 16px;
     }
+}
+
+@media (max-width: 768px) {
+    .pdf-container {
+        flex: 1;
+        height: 60vh;
+        padding: 0;
+        margin: 0;
+        max-width: 100%;
+        width: 100%;
+        border-radius: 0;
+        background: white;
+        order: -1;
+        overflow: hidden;
+    }
+
+    #pages-container {
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .pdf-page {
+        max-width: 100%;
+        border-radius: 0;
+    }
+
+    .pdf-navigation {
+        bottom: 45vh; /* Đặt ngay trên phần answer container */
+        padding: 5px 15px;
+    }
+    
+    .pdf-navigation button {
+        font-size: 20px;
+        padding: 0 5px;
+    }
+}
+
+.pdf-navigation {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 20px;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+}
+
+.pdf-navigation button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0 10px;
+}
+
+.pdf-navigation button:hover {
+    opacity: 0.8;
 }

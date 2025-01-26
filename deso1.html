@@ -7,6 +7,10 @@
     <title>Trắc nghiệm online - Đề số 1</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="de.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>
+        pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+    </script>
     <script src="de.js"></script>
 </head>
 
@@ -16,13 +20,7 @@
     </button>
     <div class="container">
         <div class="pdf-container">
-            <object id="pdf-viewer" data="deso1.pdf" type="application/pdf" width="100%" height="100%">
-                <embed src="deso1.pdf" type="application/pdf" width="100%" height="100%">
-                <p>Trình duyệt của bạn không hỗ trợ hiển thị PDF trực tiếp.
-                    <a href="deso1.pdf">Nhấn vào đây để tải PDF</a>
-                </p>
-                </embed>
-            </object>
+            <canvas id="pdf-viewer"></canvas>
         </div>
         <div class="answer-container">
             <iframe id="answer-viewer" src="answer.html"></iframe>
