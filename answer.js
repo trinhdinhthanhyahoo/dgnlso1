@@ -70,18 +70,13 @@ const timerInterval = setInterval(updateTimer, 1000);
 
 function createAnswerGrid(numberOfQuestions) {
     const answerGrid = document.getElementById('answer-grid');
-    // Tạo 4 cột cho grid
-    answerGrid.style.gridTemplateColumns = 'repeat(4, 1fr)';
-
     for (let i = 1; i <= numberOfQuestions; i++) {
         const answerItem = document.createElement('div');
         answerItem.className = 'answer-item';
 
         const questionNumber = document.createElement('div');
+        questionNumber.className = 'question-number';
         questionNumber.textContent = `Câu ${i}`;
-        questionNumber.style.fontSize = '12px';
-        questionNumber.style.color = '#666666'; // Màu chữ nhạt hơn
-        questionNumber.style.fontWeight = '400'; // Font mỏng hơn
 
         const options = document.createElement('div');
         options.className = 'answer-options';
