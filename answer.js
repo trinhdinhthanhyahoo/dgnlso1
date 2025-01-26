@@ -518,6 +518,3 @@ function confirmAction() {
     }
     closeModal();
 }
-showModal('Bạn có chắc chắn muốn nộp bài?', () => {
-    // Xử lý khi người dùng xác nhận
-});

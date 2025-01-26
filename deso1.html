@@ -15,10 +15,21 @@
         <i class="fas fa-sun"></i>
     </button>
     <div class="container">
-        <div class="pdf-container" data-pdf="deso1.pdf">
-            <iframe id="pdf-viewer" src="deso1.pdf" type="application/pdf" frameborder="0" scrolling="auto"
-                height="100%" width="100%" allow="fullscreen"></iframe>
-        </div>
+        <iframe id="exam-frame" scrolling="auto" height="100%" width="100%" allow="fullscreen" srcdoc='
+            <!DOCTYPE html>
+            <html>
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+            </head>
+            <body>
+                <div id="image-container" class="image-container">
+                    <!-- Ảnh sẽ được thêm vào đây bằng JavaScript -->
+                </div>
+            </body>
+            </html>
+        '></iframe>
         <div class="answer-container">
             <iframe id="answer-viewer" src="answer.html?de=de1"></iframe>
         </div>
