@@ -37,3 +37,84 @@ function selectAnswer(questionNumber, option) {
         }
     });
 }
+
+let selectedExam = null;
+
+function selectExam(examNumber) {
+    selectedExam = examNumber;
+
+    document.querySelectorAll('.exam-button').forEach((button, index) => {
+        if (index + 1 === examNumber) {
+            button.classList.add('selected');
+            button.classList.remove('not-selected');
+            // Thêm hiệu ứng rung nhẹ khi chọn
+            button.style.animation = 'selectShake 0.5s';
+            setTimeout(() => button.style.animation = '', 500);
+        } else {
+            button.classList.remove('selected');
+            button.classList.add('not-selected');
+        }
+    });
+
+    // Hiển thị nút bắt đầu
+    const startButton = document.querySelector('.start-button');
+    startButton.style.opacity = '1';
+    startButton.style.transform = 'translateY(0)';
+    startButton.disabled = false;
+}
+
+function startExam() {
+    if (!selectedExam) {
+        showNotification('Vui lòng chọn một đề thi trước khi bắt đầu!');
+        return;
+    }
+
+    // Hiển thị thông báo xác nhận
+    showConfirmation('Bạn đã sẵn sàng làm bài thi?', () => {
+        window.location.href = `deso${selectedExam}.html`;
+    });
+}
+
+function showNotification(message) {
+    const notification = document.createElement('div');
+    notification.className = 'notification';
+    notification.textContent = message;
+    document.body.appendChild(notification);
+
+    setTimeout(() => {
+        notification.remove();
+    }, 3000);
+}
+
+function showConfirmation(message, callback) {
+    const modal = document.createElement('div');
+    modal.className = 'confirmation-modal';
+    modal.innerHTML = `
+        <div class="modal-content">
+            <p>${message}</p>
+            <div class="modal-buttons">
+                <button onclick="this.parentElement.parentElement.parentElement.remove()">Hủy</button>
+                <button onclick="confirmStart(this)" class="primary">Bắt đầu</button>
+            </div>
+        </div>
+    `;
+    document.body.appendChild(modal);
+
+    window.confirmStart = (button) => {
+        button.parentElement.parentElement.parentElement.remove();
+        callback();
+    };
+}
+
+// Khởi tạo khi trang load
+window.onload = function () {
+    document.querySelectorAll('.exam-button').forEach(button => {
+        button.classList.remove('selected');
+        button.classList.remove('not-selected');
+    });
+
+    const startButton = document.querySelector('.start-button');
+    startButton.style.opacity = '0.5';
+    startButton.style.transform = 'translateY(20px)';
+    startButton.disabled = true;
+};

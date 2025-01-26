@@ -183,6 +183,68 @@ body {
     transform: translateY(-1px);
 }
 
+.exam-button {
+    padding: 20px;
+    background: white;
+    border: none;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+    text-align: left;
+}
+
+.exam-button i {
+    font-size: 2em;
+    color: var(--primary-color);
+    transition: transform 0.3s ease;
+}
+
+.exam-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.exam-title {
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+.exam-details {
+    font-size: 0.9em;
+    color: #666;
+}
+
+.exam-button.selected {
+    background: var(--primary-color);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.exam-button.selected i,
+.exam-button.selected .exam-title,
+.exam-button.selected .exam-details {
+    color: white;
+}
+
+.exam-button.not-selected {
+    opacity: 0.6;
+    transform: scale(0.98);
+}
+
+.exam-button:hover:not(.selected) {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
 /* Mobile Responsive Styles */
 @media (max-width: 768px) {
     .start-container {
@@ -213,16 +275,12 @@ body {
     }
 
     .exam-button {
-        height: auto;
         padding: 15px;
-        flex-direction: row;
-        justify-content: flex-start;
-        gap: 15px;
+        gap: 10px;
     }
 
     .exam-button i {
         font-size: 1.5em;
-        margin: 0;
     }
 
     .start-button {
@@ -232,6 +290,14 @@ body {
     }
 
     .exam-info {
+        font-size: 0.8em;
+    }
+
+    .exam-title {
+        font-size: 1em;
+    }
+
+    .exam-details {
         font-size: 0.8em;
     }
 } 
