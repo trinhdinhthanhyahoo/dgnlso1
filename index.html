@@ -5,65 +5,218 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trắc nghiệm online</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         :root {
-            --primary-color: #2563eb;
-            --primary-hover: #1d4ed8;
-            --background-color: #f1f5f9;
+            --primary-color: #4CAF50;
+            --gradient-1: linear-gradient(45deg, #FF6B6B, #FFE66D);
+            --gradient-2: linear-gradient(45deg, #4ECDC4, #556270);
+            --gradient-3: linear-gradient(45deg, #A8E6CF, #DCEDC1);
+            --gradient-4: linear-gradient(45deg, #FFD93D, #FF6B6B);
+            --gradient-5: linear-gradient(45deg, #6C5B7B, #C06C84);
         }
 
         body {
+            background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            min-height: 100vh;
             margin: 0;
-            height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            background-color: var(--background-color);
-            font-family: 'Segoe UI', system-ui, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
         }
 
         .start-container {
             text-align: center;
-            padding: 50px;
-            background: white;
-            border-radius: 20px;
-            box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1);
-            max-width: 90%;
-            width: 500px;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 30px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            width: 100%;
+            backdrop-filter: blur(10px);
+        }
+
+        .header {
+            margin-bottom: 40px;
         }
 
         h1 {
-            color: var(--primary-color);
+            color: #2c3e50;
+            font-size: 2.8em;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: colorChange 10s infinite;
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.2em;
+            margin-bottom: 30px;
+        }
+
+        .exam-menu {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
             margin-bottom: 40px;
-            font-size: 2.5em;
-            font-weight: 700;
+            padding: 0 20px;
+        }
+
+        .exam-button {
+            padding: 20px;
+            font-size: 18px;
+            background: white;
+            border: none;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            height: 120px;
+            justify-content: center;
+        }
+
+        .exam-button i {
+            font-size: 2em;
+            margin-bottom: 8px;
+        }
+
+        .exam-button.selected {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .exam-button.not-selected {
+            opacity: 0.5;
+            transform: scale(0.98);
+            filter: grayscale(40%);
+        }
+
+        .start-section {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(0, 0, 0, 0.1);
         }
 
         .start-button {
-            padding: 16px 48px;
-            font-size: 18px;
-            background-color: var(--primary-color);
+            padding: 20px 40px;
+            font-size: 1.2em;
+            background: linear-gradient(45deg, #00b09b, #96c93d);
             color: white;
             border: none;
-            border-radius: 12px;
+            border-radius: 50px;
             cursor: pointer;
-            transition: all 0.2s;
-            font-weight: 500;
-            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 2px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            min-width: 250px;
         }
 
-        .start-button:hover {
-            background-color: var(--primary-hover);
-            transform: translateY(-2px);
+        .exam-info {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .exam-menu {
+                grid-template-columns: 1fr;
+            }
+
+            .exam-button {
+                height: 100px;
+            }
         }
     </style>
 </head>
 
 <body>
     <div class="start-container">
-        <h1>Trắc nghiệm online</h1>
-        <button class="start-button" onclick="window.location.href='deso1.html'">Bắt đầu làm bài</button>
+        <div class="header">
+            <h1><i class="fas fa-graduation-cap"></i>Trắc nghiệm online</h1>
+            <div class="subtitle">Chọn đề thi phù hợp với bạn</div>
+        </div>
+
+        <div class="exam-menu">
+            <button class="exam-button" onclick="selectExam(1)">
+                <i class="fas fa-book-open"></i>
+                <span>Đề số 1</span>
+            </button>
+            <button class="exam-button" onclick="selectExam(2)">
+                <i class="fas fa-pencil-alt"></i>
+                <span>Đề số 2</span>
+            </button>
+            <button class="exam-button" onclick="selectExam(3)">
+                <i class="fas fa-tasks"></i>
+                <span>Đề số 3</span>
+            </button>
+            <button class="exam-button" onclick="selectExam(4)">
+                <i class="fas fa-clipboard-check"></i>
+                <span>Đề số 4</span>
+            </button>
+            <button class="exam-button" onclick="selectExam(5)">
+                <i class="fas fa-star"></i>
+                <span>Đề số 5</span>
+            </button>
+        </div>
+
+        <div class="start-section">
+            <button class="start-button" onclick="startExam()">
+                Bắt đầu làm bài
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            <div class="exam-info">
+                Thời gian làm bài: 150 phút | 120 câu hỏi
+            </div>
+        </div>
     </div>
+
+    <script>
+        let selectedExam = null;
+
+        function selectExam(examNumber) {
+            selectedExam = examNumber;
+            document.querySelectorAll('.exam-button').forEach((button, index) => {
+                if (index + 1 === examNumber) {
+                    button.classList.add('selected');
+                    button.classList.remove('not-selected');
+                } else {
+                    button.classList.remove('selected');
+                    button.classList.add('not-selected');
+                }
+            });
+        }
+
+        window.onload = function () {
+            document.querySelectorAll('.exam-button').forEach(button => {
+                button.classList.remove('selected');
+                button.classList.remove('not-selected');
+            });
+        }
+
+        function startExam() {
+            if (!selectedExam) {
+                alert('Vui lòng chọn một đề thi trước khi bắt đầu!');
+                return;
+            }
+
+            // Hiển thị thông báo về phím F11
+            alert('Ấn F11 để hiển thị full màn hình');
+
+            // Chuyển hướng đến trang đề thi được chọn với ID chính xác
+            const examId = `de${selectedExam}`;
+            window.location.href = `deso${selectedExam}.html`;
+        }
+    </script>
 </body>
 
 </html>

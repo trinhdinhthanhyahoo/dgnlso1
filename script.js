@@ -37,7 +37,3 @@ function selectAnswer(questionNumber, option) {
         }
     });
 }
-
-document.addEventListener('DOMContentLoaded', () => {
-    createAnswerGrid(40); // Điều chỉnh số câu hỏi tại đây
-}); 
