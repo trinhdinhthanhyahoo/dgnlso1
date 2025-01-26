@@ -181,4 +181,57 @@ body {
 .solution-btn:hover {
     background-color: var(--primary-hover);
     transform: translateY(-1px);
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+    .start-container {
+        padding: 20px;
+        margin: 10px;
+        width: calc(100% - 20px);
+        max-width: 100%;
+    }
+
+    .logo {
+        font-size: 2em;
+    }
+
+    h1 {
+        font-size: 1.8em;
+        text-align: center;
+    }
+
+    .subtitle {
+        font-size: 1em;
+        text-align: center;
+    }
+
+    .exam-menu {
+        grid-template-columns: 1fr;
+        gap: 12px;
+        padding: 0;
+    }
+
+    .exam-button {
+        height: auto;
+        padding: 15px;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 15px;
+    }
+
+    .exam-button i {
+        font-size: 1.5em;
+        margin: 0;
+    }
+
+    .start-button {
+        width: 100%;
+        padding: 15px;
+        font-size: 1em;
+    }
+
+    .exam-info {
+        font-size: 0.8em;
+    }
 } 
